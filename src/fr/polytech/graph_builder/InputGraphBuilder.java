@@ -66,10 +66,14 @@ public class InputGraphBuilder implements GraphBuilder
             {
                 System.err.println("Format error at line " + lineNumber + " : the line doesn't contain enough elements (" + splittedLine.length + " provided, 2 required).");
             }
+            else if(splittedLine.length > 2)
+            {
+                System.out.println("Warning : format error at line " + lineNumber + " : the line contains too much elements (" + splittedLine.length + " provided, 2 required). Elements after " + splittedLine[1] + " will be ignored.");
+            }
 
             String name = line.split(" ")[0];
             String colorS = line.split(" ")[1];
-            Color color = null;
+            Color color;
 
             try
             {
@@ -100,6 +104,10 @@ public class InputGraphBuilder implements GraphBuilder
             {
                 System.err.println("Format error at line " + lineNumber + " : the line doesn't contain enough elements (" + splittedLine.length + " provided, 3 required).");
             }
+            else if(splittedLine.length > 3)
+            {
+                System.out.println("Warning : format error at line " + lineNumber + " : the line contains too much elements (" + splittedLine.length + " provided, 3 required). Elements after " + splittedLine[2] + " will be ignored.");
+            }
 
             String startName = splittedLine[0];
             String endName = splittedLine[1];
@@ -107,12 +115,14 @@ public class InputGraphBuilder implements GraphBuilder
 
             Optional<Node> startNodeSearch = graph.getNodeByName(startName);
             Optional<Node> endNodeSearch = graph.getNodeByName(endName);
-            Node startNode = null;
-            Node endNode = null;
+            Node startNode;
+            Node endNode;
 
             try
             {
+                //noinspection OptionalGetWithoutIsPresent
                 startNode = startNodeSearch.get();
+                //noinspection OptionalGetWithoutIsPresent
                 endNode = endNodeSearch.get();
                 Color color = Color.toColor(colorS);
                 Edge edge = new Edge(color, endNode);

@@ -4,8 +4,15 @@ import fr.polytech.exception.ColorFormatException;
 
 public enum Color
 {
-    RED,
-    BLUE;
+    RED("Red"),
+    BLUE("Blue");
+
+    final String color;
+
+    Color(String color)
+    {
+        this.color = color;
+    }
 
     public static Color toColor(String color) throws ColorFormatException
     {
@@ -21,5 +28,11 @@ public enum Color
         {
             throw new ColorFormatException();
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return color;
     }
 }

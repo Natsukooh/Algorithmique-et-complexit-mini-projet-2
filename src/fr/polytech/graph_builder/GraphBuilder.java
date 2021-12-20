@@ -4,5 +4,5 @@ import fr.polytech.graph.Graph;
 
 public interface GraphBuilder
 {
-    public Graph buildGraph();
+    Graph buildGraph();
 }

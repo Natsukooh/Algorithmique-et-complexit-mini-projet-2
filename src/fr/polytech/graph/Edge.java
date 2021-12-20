@@ -14,4 +14,13 @@ public class Edge extends Colored
     {
         return end;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Edge{" +
+                "color=" + color +
+                ", end=" + end +
+                '}';
+    }
 }

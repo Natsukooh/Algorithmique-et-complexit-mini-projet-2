@@ -1,0 +1,23 @@
+x b
+v r
+y b
+z r
+a r
+b r
+c b
+d b
+
+x a b
+x v b
+v x r
+v y b
+v z b
+z y r
+z d b
+a y r
+b y b
+b d r
+c b r
+c z r
+c d b
+d z b

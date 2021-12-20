@@ -36,11 +36,30 @@ public class Node extends Colored
 
     public Optional<Node> getNextEdgeByName(String name)
     {
-        return edges.stream().map(Edge::getEnd).filter(end -> end.getName().equals(name)).findAny();
+        return edges
+                .stream()
+                .map(Edge::getEnd)
+                .filter(end -> end.getName().equals(name))
+                .findAny();
     }
 
     public String getName()
     {
         return name;
+    }
+
+    public List<Edge> getEdges()
+    {
+        return edges;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Node{" +
+                "color=" + color +
+                ", name='" + name + '\'' +
+                ", edges=" + edges +
+                '}';
     }
 }
