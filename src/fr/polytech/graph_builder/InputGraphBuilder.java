@@ -125,8 +125,8 @@ public class InputGraphBuilder implements GraphBuilder
                 //noinspection OptionalGetWithoutIsPresent
                 endNode = endNodeSearch.get();
                 Color color = Color.toColor(colorS);
-                Edge edge = new Edge(color, endNode);
-                startNode.addEdge(edge);
+                Edge edge = new Edge(color, startNode, endNode);
+                startNode.addOutgoingEdge(edge);
             }
             catch (NoSuchElementException e)
             {

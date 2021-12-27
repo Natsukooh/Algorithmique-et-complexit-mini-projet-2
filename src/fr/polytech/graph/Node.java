@@ -4,39 +4,45 @@ import fr.polytech.exception.EdgeAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Node extends Colored
 {
     private final String name;
-    private List<Edge> edges;
+    private final List<Edge> incomingEdges;
+    private List<Edge> outgoingEdges;
 
     public Node(Color color, String name)
     {
         super(color);
         this.name = name;
-        this.edges = new ArrayList<>();
+        this.outgoingEdges = new ArrayList<>();
+        this.incomingEdges = new ArrayList<>();
     }
 
     public Node(Color color, String name, List<Edge> edges)
     {
         this(color, name);
-        this.edges = edges;
+        this.outgoingEdges = edges;
     }
 
-    public void addEdge(Edge edge) throws EdgeAlreadyExistsException
+    public void addOutgoingEdge(Edge edge) throws EdgeAlreadyExistsException
     {
-        if(getNextEdgeByName(edge.getEnd().getName()).isPresent())
+        if(getNextNodeByName(edge.getEnd()
+                .getName())
+                .isPresent())
         {
             throw new EdgeAlreadyExistsException();
         }
 
-        edges.add(edge);
+        outgoingEdges.add(edge);
+        edge.getEnd().incomingEdges.add(edge);
     }
 
-    public Optional<Node> getNextEdgeByName(String name)
+    public Optional<Node> getNextNodeByName(String name)
     {
-        return edges
+        return outgoingEdges
                 .stream()
                 .map(Edge::getEnd)
                 .filter(end -> end.getName().equals(name))
@@ -48,9 +54,34 @@ public class Node extends Colored
         return name;
     }
 
-    public List<Edge> getEdges()
+    public List<Edge> getOutgoingEdges()
     {
-        return edges;
+        return outgoingEdges;
+    }
+
+    public List<Edge> getIncomingEdges()
+    {
+        return incomingEdges;
+    }
+
+    public void setColor(Color color)
+    {
+        this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return name.equals(node.name) && outgoingEdges.equals(node.outgoingEdges);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(name, outgoingEdges);
     }
 
     @Override
@@ -59,7 +90,7 @@ public class Node extends Colored
         return "Node{" +
                 "color=" + color +
                 ", name='" + name + '\'' +
-                ", edges=" + edges +
+                ", edges=" + outgoingEdges +
                 '}';
     }
 }

@@ -51,7 +51,12 @@ public class RandomLinearGraphBuilder implements GraphBuilder
             try
             {
                 //noinspection OptionalGetWithoutIsPresent
-                graph.getNodeByName(nodeName).get().addEdge(new Edge(edgeColor, graph.getNodeByName(arrivalNodeName).get()));
+                graph.getNodeByName(nodeName)
+                        .get()
+                        .addOutgoingEdge(new Edge(
+                                edgeColor,
+                                graph.getNodeByName(nodeName).get(),
+                                graph.getNodeByName(arrivalNodeName).get()));
             }
             catch (EdgeAlreadyExistsException ignored) { /* this should never happen */ }
         }
