@@ -58,8 +58,11 @@ public class Graph
         try
         {
             clone = (Graph) this.clone();
-        } catch (CloneNotSupportedException ignored)
+        } catch (CloneNotSupportedException e)
         { /* this should not happen */
+            System.err.println("Hi :)");
+            e.printStackTrace();
+            System.err.println(e.getMessage());
             return Optional.empty();
         }
 
@@ -128,7 +131,6 @@ public class Graph
     @Override
     protected Object clone() throws CloneNotSupportedException
     {
-        Object object = super.clone(); // if this line is deleted, IntellIJ puts a warning here... I don't get it but I don't like having warnings LMAO
         Graph clone = new Graph();
 
         this.nodes.forEach(node ->
