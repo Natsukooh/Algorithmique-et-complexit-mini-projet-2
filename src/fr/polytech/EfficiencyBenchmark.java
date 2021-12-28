@@ -30,8 +30,6 @@ public class EfficiencyBenchmark
         {
             for(float redEdgeProbability = 0f; redEdgeProbability < 1.05f; redEdgeProbability += 0.1f)
             {
-                System.out.println("Simulating with p=" + normalize(redNodeProbability) + ", q=" + normalize(redEdgeProbability));
-
                 GraphBuilder builder = new RandomLinearGraphBuilder(NODES, redNodeProbability, redEdgeProbability, 0.5f);
 
                 for(int i = 0; i < SIMULATIONS; i++)

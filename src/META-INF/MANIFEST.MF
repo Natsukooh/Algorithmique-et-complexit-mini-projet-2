@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: fr.polytech.ScoreBasedSolverTest
+Main-Class: fr.polytech.EfficiencyBenchmark
 
