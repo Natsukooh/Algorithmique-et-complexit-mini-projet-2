@@ -3,10 +3,11 @@ package fr.polytech;
 import fr.polytech.graph.Graph;
 import fr.polytech.graph_builder.GraphBuilder;
 import fr.polytech.graph_builder.RandomLinearGraphBuilder;
+import fr.polytech.solver.RedBlueMaximizationBasicSolver;
 import fr.polytech.solver.RedBlueMaximizationNaiveSolver;
 import fr.polytech.solver.RedBlueMaximizationScoreBasedSolver;
 
-public class ScoreBasedSolverTest
+public class SolversTests
 {
     public static void main(String[] args)
     {
@@ -21,23 +22,31 @@ public class ScoreBasedSolverTest
         /*
         Here we are gonna generate a large amount of graphs, and test the score based solver, to compare its results to the naive solver, which gives the best possible answer but is slow on big graphs.
          */
-        final int SIMULATIONS = 1000;
-        int equalities = 0;
+        final int SIMULATIONS = 10000;
+        int equalitiesAlgo1 = 0;
+        int equalitiesAlgo2 = 0;
+
         for(int i = 0; i < SIMULATIONS; i++)
         {
             Graph graph = gb.buildGraph();
-            int scoreBasedResult = graph.solve(new RedBlueMaximizationScoreBasedSolver());
+            int algoV1Result = graph.solve(new RedBlueMaximizationScoreBasedSolver());
+            int algoV2Result = graph.solve(new RedBlueMaximizationBasicSolver());
             int naiveResult = graph.solve(new RedBlueMaximizationNaiveSolver());
 
-            if(scoreBasedResult == naiveResult)
+            if(algoV1Result == naiveResult)
             {
-                equalities++;
+                equalitiesAlgo1++;
+            }
+
+            if(algoV2Result == naiveResult)
+            {
+                equalitiesAlgo2++;
             }
         }
 
         /*
         Finally, we print out the results.
          */
-        System.out.println(SIMULATIONS + " simulations done.\nIn " + equalities + " simulations, the score based algorithm has found the max red sequence.");
+        System.out.println(SIMULATIONS + " simulations done.\nIn " + equalitiesAlgo1 + " simulations, the V1 algorithm has found the max red sequence.\nIn " + equalitiesAlgo2 + " simulations, the V2 algorithm has found the max red sequence.");
     }
 }
