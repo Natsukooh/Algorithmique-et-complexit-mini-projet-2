@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeTable
+public class BuildTable
 {
     private static String DATA_FILE_NAME = "";
     private static String OUTPUT_FILE_NAME = "data.csv";
