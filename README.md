@@ -1,5 +1,8 @@
 # Mini-projet numéro 2 - Algorithmes et Complexité
-## Algorithmes pour le Jeu Rouge Bleu  
+## Algorithmes pour le Jeu Rouge Bleu
+## Alves Dos Reis Emmanuel
+## Baudet Romain
+## Khayati Hiba
+## Bouzidi Héba
 
-Voir classe src/fr/polytech/ScoreBasedSolverTest pour un exemple d'utilisation des différentes classes qui existent.  
-En l'attente d'un README plus détaillé, des commentaires expliquent le fonctionnement de ScoreBasedSolverTest.
+Veuillez trouver dans le dossier ici présent ou bien à l'adresse https://github.com/Natsukooh/Algorithmique-et-complexit-mini-projet-2/blob/main/Rapport.pdf le rapport de ce mini-projet de notre groupe.
