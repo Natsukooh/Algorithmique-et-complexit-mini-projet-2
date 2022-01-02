@@ -20,7 +20,7 @@ public class SolversTests
         GraphBuilder gb = new RandomLinearGraphBuilder(10, 0.5f, 0.5f, 0.5f);
 
         /*
-        Here we are gonna generate a large amount of graphs, and test the score based solver, to compare its results to the naive solver, which gives the best possible answer but is slow on big graphs.
+        Here we are going to generate a large amount of graphs, and test the score based solver, to compare its results to the naive solver, which gives the best possible answer but is slow on big graphs.
          */
         final int SIMULATIONS = 10000;
         int equalitiesAlgo1 = 0;

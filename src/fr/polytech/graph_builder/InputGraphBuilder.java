@@ -17,20 +17,40 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Scanner;
 
+/*
+A graph builder to build some graphs from a text-formatted input.
+
+The inputs must have the following format :
+- one line per node, each line describing a node of the graph by its name and its color : <name> <color> . The name must not contain any space since it is the separator between the name and the color, and the names are uniques (you mustn't try to give two nodes the same name). Since the only existing colors are red and blue, the color must either be R or r to indicate red, or B or b to indicate blue.
+- an empty line, as the separator between the nodes part and the edges part.
+- one line per edge, each line describing an edge of the graph by the starting node, the ending node and the color : <starting node name> <ending node name> <color> . The names must be valid (each given name must be the name of a node declared previously), and the color too (same color format than above).
+
+An InputGraphBuilder has a input stream member, where it is reading in.
+The different constructors can make different input streams.
+ */
 public class InputGraphBuilder implements GraphBuilder
 {
     private InputStream inputStream;
 
+    /*
+    No parameter constructor will make the InputGraphBuilder read in the standard input.
+     */
     public InputGraphBuilder()
     {
         inputStream = System.in;
     }
 
+    /*
+    Reads into the specified inputStream.
+     */
     public InputGraphBuilder(InputStream inputStream)
     {
         this.inputStream = inputStream;
     }
 
+    /*
+    Creates a FileInputStream to the given file to read into it.
+     */
     public InputGraphBuilder(File file)
     {
         try
@@ -43,6 +63,9 @@ public class InputGraphBuilder implements GraphBuilder
         }
     }
 
+    /*
+    Reading the content to build a graph, according to the rules given above.
+     */
     @Override
     public Graph buildGraph()
     {

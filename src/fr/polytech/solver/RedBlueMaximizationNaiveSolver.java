@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/*
+Naive solver.
+Recursively looks for all the possibilities, and returns the longest red sequence possible.
+Is quite fast when the amount of nodes is lower than 15, but after that it becomes extremely slow (the complexity is exponential).
+ */
 public class RedBlueMaximizationNaiveSolver implements RedBlueMaximizationSolver
 {
     public int solve(Graph graph)

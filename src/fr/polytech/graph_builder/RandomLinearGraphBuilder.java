@@ -9,15 +9,28 @@ import fr.polytech.graph.Node;
 
 import java.util.Random;
 
+/*
+A graph builder to randomly build a specific amount of nodes aligned, each node having a certain chance of being red, with 1 edge between each node, having a certain chance to point left and a certain chance to be red.
+ */
 public class RandomLinearGraphBuilder implements GraphBuilder
 {
+    // The amount of nodes in the graph
     private final int nodesNumber;
+
+    // The probability for each node to be red
     private final float redNodeChance;
+
+    // The probability for each edge to be red
     private final float redEdgeChance;
+
+    // The probability for each edge to point left
     private final float vertexPointingToLeftChance;
 
     private final Random randomNumberGenerator = new Random();
 
+    /*
+    We create a new builder with the given probabilities
+     */
     public RandomLinearGraphBuilder(int nodesNumber, float redNodeChance, float redEdgeChance, float vertexPointingToLeftChance)
     {
         this.nodesNumber = nodesNumber;
@@ -26,6 +39,9 @@ public class RandomLinearGraphBuilder implements GraphBuilder
         this.vertexPointingToLeftChance = vertexPointingToLeftChance;
     }
 
+    /*
+    This method builds a graph with the probabilities it has been given in the constructor, and returns it.
+     */
     @Override
     public Graph buildGraph()
     {

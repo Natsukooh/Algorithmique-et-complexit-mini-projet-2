@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+This class is used to make a JAR executable to build a .csv file of the table for the exercise 7.
+Usage : java -jar BuildTable.jar <data file name> <output file name>
+The data file name must be given. The output file name is not mandatory, by default it is ./data.csv
+ */
 public class BuildTable
 {
     private static String DATA_FILE_NAME = "";
